@@ -16,6 +16,21 @@ class BoardArray : public Board {
         void add(Entry* entry) {
             // TODO: IMPLEMENT THIS FUNCTION
             // ALGORITHM IS PROVIDED IN INSTRUCTIONS.TXT
+
+            if(index < SIZE){
+                array[index] = *entry;
+                index++;
+            }else{
+                for(int i = 0; i<index; i++){
+                    if (entry -> compare(&array[i])){
+                        for(int j = SIZE;j > 0; j--){
+                            array[i] = array[i - 1];
+                        }
+                    }
+                }
+            }
+            
+            return;
         }
 
         void print() {
@@ -24,4 +39,6 @@ class BoardArray : public Board {
                 array[i].print();
             }
         }
+
+        
 };
